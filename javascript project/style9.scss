@@ -1,0 +1,89 @@
+@mixin all ($value1, $value2, $value3) {
+    * {
+        box-sizing: $value1;
+        padding: $value2;
+        margin: $value3;
+    }
+}
+
+$gradient-background:linear-gradient(to bottom, #f5fbf5, #d6d7d1, #b9b5af, #9a9490, #7c7473);
+$display: inline-block;
+@include all(border-box, 0, 0);
+$font-family: 'Segoe UI',
+Tahoma,
+Geneva,
+Verdana,
+sans-serif;
+// centering mixin
+@mixin centerdiv {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.main_container {
+    @include centerdiv();
+    display: $display;
+    padding: 2rem;
+    border-radius: 10px;
+    background-image: $gradient-background;
+    .subcontainer {
+        display: inline-block;
+        margin-top: 10px;
+        input[type="number"] {
+            padding: 10px;
+            border-radius: 20px;
+            border: none;
+            outline: none;
+            width: 250px;
+            margin: 0 10px;
+            text-align: center;
+            font-size: 1.2rem;
+            font-weight: bold;
+            transition: transform 300ms ease-in-out;
+            &::placeholder {
+                font-weight: lighter;
+            }
+            &:focus {
+                transform: scaleX(1.1);
+                outline: 2px solid rgb(48, 220, 18);
+            }
+            @media screen and (max-width:500px) {
+                width: 100%;
+            }
+            @media screen and (max-width:300px) {
+                font-size: 1rem;
+                margin: 0;
+                padding: 8px;
+                &:focus {
+                    transform: none;
+                }
+            }
+        }
+        label {
+            display: block;
+            text-align: center;
+            font-size: 1.3rem;
+            font-family: $font-family;
+            @media screen and (max-width: 300px) {
+                font-size: 1.1rem;
+            }
+        }
+    }
+    h1 {
+        text-align: center;
+        padding-bottom: 10px;
+        font-family: $font-family;
+        text-transform: capitalize;
+        @media screen and (max-width: 300px) {
+            font-size: 1.3rem;
+        }
+    }
+    @media screen and (max-width:1216px) {
+        text-align: center;
+    }
+    @media screen and (max-width:300px) {
+        width: 90%;
+    }
+}
